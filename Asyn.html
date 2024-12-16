@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronized</title>
+</head>
+<body>
+    <h1>Chai Aur Code</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    setTimeout(function(i){
+        console.log("Hello");
+        
+    },2000)
+
+   const ref = setTimeout(function(){
+        document.querySelector('h1').innerHTML = "Java Script Sceries"
+    },3000)
+
+    document.querySelector('#stop').addEventListener('click',function(e){
+        clearTimeout(ref);
+        console.log("STOPPED");
+        
+    },false)
+
+    setInterval(function(){
+        console.log("***Hello****",Date.now());
+        
+    },1000)
+</script>
+</html>

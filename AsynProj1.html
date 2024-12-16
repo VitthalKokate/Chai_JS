@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Prject 1</title>
+</head>
+<body>
+    <h1>START button change background color each 1 Sec  AND STOP is stop the curret background color</h1>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+</body>
+<script>
+//     let ref
+//     const changeBg = function(){
+//         if(ref == null){
+//             ref = setInterval(function(){
+//                          document.body.style.backgroundColor = `rgb(${Math.floor(Math.random()*200)},${Math.floor(Math.random()*200)},${Math.floor(Math.random()*200)}`
+//             },1000)
+//         }
+       
+//     }
+// document.querySelector('#start').addEventListener('click',changeBg)
+
+// document.querySelector('#stop').addEventListener('click',function(){
+//     clearInterval(ref);
+//     ref = null
+// })
+
+
+const colorGenerat = function(){
+    const hexa = '0123456789ABCDEF'
+   let color = '#'
+
+   for (let i = 0; i < 6; i++) {
+    color+= hexa[Math.floor(Math.random()*16)]
+   }
+return color   
+}
+
+const applyColor = function(){
+    console.log(colorGenerat());
+    
+    document.querySelector('body').style.backgroundColor = colorGenerat()
+}
+
+let reference
+document.querySelector("#start").addEventListener('click',function(e){
+        if(! reference){
+            reference = setInterval(applyColor,1000)
+        }
+},false)
+
+document.querySelector("#stop").addEventListener('click',function(e){
+    clearInterval(reference)
+    reference = null
+},false)
+
+    
+</script>
+</html>

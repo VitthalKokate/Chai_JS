@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request
+
+    </title>
+</head>
+<body>
+    Hello
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr= new XMLHttpRequest();  // state 1
+    xhr.open('GET',requestUrl)
+    console.log(xhr.readyState);
+    console.log("**");
+    
+
+    xhr.onreadystatechange = function(){
+        // console.log(xhr.readyState);
+
+        // img - url "https://avatars.githubusercontent.com/u/11613311?v=4"
+
+        if(xhr.readyState ===4){
+            const data = JSON.parse(this.responseText)
+            console.log(data.followers);
+            
+        }
+        
+    }
+  
+   
+
+xhr.send();
+
+
+</script>
+</html>                                                                                           

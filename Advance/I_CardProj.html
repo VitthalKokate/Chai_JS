@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-Card Project</title>
+</head>
+<style>
+    .container{
+       border: 2px solid red;
+       /* display: inline-block; */
+
+       width: 30%;
+       height: 30%;
+    }
+
+</style>
+<body style="background-color: black; color: aliceblue;">
+
+    <center>
+        <div class="container">
+            <h2>I-CARD</h2>
+             <img src="" alt="IMG"  width="150px" height="150px">  <br>
+             <label for="nm">Name :</label> <span id="nm"></span><br>
+             <label for="nm">ID :</label> <span id="id"></span><br>
+             <label for="nm">Followes :</label> <span id="flow"></span>
+        </div>
+    </center>
+    
+</body>
+
+<script>
+    const ref = new XMLHttpRequest();
+    url = 'https://api.github.com/users/hiteshchoudhary'
+    ref.open('GET',url)
+    
+  
+    
+     ref.onreadystatechange = function(){
+
+        if(ref.readyState == 3){
+            const data = JSON.parse(this.responseText)
+
+            console.log(data.name);
+            document.getElementById('nm').innerText = data.name;
+            document.getElementById('id').innerText = data.id;
+            document.getElementById('flow').innerText = data.followers;
+            document.querySelector('img').setAttribute('src',`${data.avatar_url}`)
+
+            
+
+        }
+     }
+    
+     ref.send()
+
+
+</script>
+</html>
